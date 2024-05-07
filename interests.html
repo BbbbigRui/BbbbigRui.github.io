@@ -22,6 +22,28 @@
 
   <link rel="icon" type="image/png" href="images/icons.png">
   
+  <style>
+    div.gallery {
+      margin: 5px;
+      border: 1px solid #ccc;
+      float: left;
+      width: 300px;
+    }
+    
+    div.gallery:hover {
+      border: 1px solid #777;
+    }
+    
+    div.gallery img {
+      width: 100%;
+      height: auto;
+    }
+    
+    div.desc {
+      padding: 15px;
+      text-align: center;
+    }
+    </style>
 
 </head>
 
@@ -60,9 +82,37 @@
 
   <br>
 
-  <img src="images/Gallery/xinjiang_dog.jpg" width="300px"/>
+  <!-- <div class="w3-container w3-padding-32" >
+    <img src="images/Gallery/xinjiang_dog.jpg" width="500px"/>
 
-  <div style="position:relative; z-index:2; left:10px; top:10px">Altay, Xinjiang</div>
+    <div style="position:relative; z-index:2; left:10px; top:10px">Altay, Xinjiang</div>  
+  </div> -->
+
+  <div class="gallery">
+    <a target="_blank" href="images/Gallery/xinjiang_dog.jpg">
+      <img src="images/Gallery/xinjiang_dog.jpg" alt="Wolong Bay" width="400" height="400">
+    </a>
+    <div class="desc">Altay, Xinjiang</div>
+  </div>
+
+  <div class="gallery">
+    <a target="_blank" href="images/Gallery/fellow_peers2.jpg">
+      <img src="images/Gallery/fellow_peers2.jpg" alt="Future-fellow Peers" width="400" height="400">
+    </a>
+    <div class="desc">Future-fellow peers, FAST LAB</div>
+  </div>
+
+  <div class="gallery">
+    <a target="_blank" href="images/Gallery/robot_competition.png">
+      <img src="images/Gallery/robot_competition.png" alt="Robot Competition" width="400" height="400">
+    </a>
+    <div class="desc">Jimo, Shandong</div>
+  </div>
+
+  <!-- <img src="images/Gallery/fellow_peers.jpg" width="500px"/>
+
+  <div style="position:relative; z-index:2; left:10px; top:10px">Future-fellow peers, FAST LAB, Huzhou</div> -->
+
 
 </div>
 
