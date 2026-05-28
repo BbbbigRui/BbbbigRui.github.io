@@ -10,30 +10,28 @@
   <meta name="author" content="Rui Jin" />
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&amp;display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/icons.png">
 
   <style>
     /* 全局字体设置 */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body, h1, h2, h3, h4, h5, h6, .w3-wide { font-family: "Montserrat", sans-serif; }
     .w3-sidebar a { font-family: "Roboto", sans-serif; }
-    body { color: #333; line-height: 1.6; }
+    body { color: #333; line-height: 1.6; overflow-x: hidden; }
 
     /* 链接样式 */
     a { text-decoration: none; transition: opacity 0.2s ease; }
     a:hover { opacity: 0.7; }
-    .paper-link { color: #447ec9; font-weight: 500; }
+    .paper-link { color: #447ec9; font-weight: 500; overflow-wrap: anywhere; }
+    .w3-content { width: 100%; }
+    .section-container { width: 100%; }
 
     /* 布局修正核心代码 */
     /* 1. 默认状态（电脑）：侧边栏存在，主内容左边距 150px */
     .main-content-wrapper { margin-left: 150px; }
-    
-    /* 2. 移动端状态（<992px）：侧边栏隐藏，主内容铺满 */
-    @media screen and (max-width: 992px) {
-        .main-content-wrapper { margin-left: 0 !important; }
-        .w3-sidebar { display: none; }
-    }
 
     /* NEW 标签样式 */
     .badge-new {
@@ -46,10 +44,11 @@
     .img-box {
         display: flex; flex-wrap: wrap; gap: 15px;
         margin-top: 10px; margin-bottom: 15px;
+        align-items: flex-start;
     }
     .img-box img {
         border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        object-fit: cover;
+        object-fit: cover; max-width: 100%;
     }
     
     /* 列表样式 */
@@ -57,7 +56,46 @@
     ul.custom-list li { margin-bottom: 8px; }
     .pub-item { margin-bottom: 40px; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; }
     .pub-item:last-child { border-bottom: none; }
-    .pub-title { font-size: 1.1em; font-weight: bold; color: #000; }
+    .pub-title { font-size: 1.1em; font-weight: bold; color: #000; overflow-wrap: anywhere; }
+    .project-heading { display:flex; justify-content:space-between; align-items:baseline; gap: 16px; }
+    .contact-line { display: inline-block; margin: 0 15px; font-family: "Roboto", sans-serif; overflow-wrap: anywhere; }
+
+    /* 2. 移动端状态（<992px）：侧边栏隐藏，主内容铺满 */
+    @media screen and (max-width: 992px) {
+        .main-content-wrapper { margin-left: 0 !important; }
+        .w3-sidebar { display: none; }
+    }
+
+    @media screen and (max-width: 700px) {
+        .w3-container { padding-left: 18px; padding-right: 18px; }
+        .w3-container, .w3-row, .w3-col { max-width: 100%; min-width: 0; }
+        .w3-main, .w3-content { max-width: 100%; overflow-x: hidden; }
+        .w3-row { margin-left: 0; margin-right: 0; }
+        .w3-col { float: none !important; width: 100% !important; }
+        #home .w3-col, #home p, #home img { max-width: 100%; }
+        #home img { display: block; width: 100% !important; }
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.6rem; }
+        h3 { font-size: 1.25rem; }
+        p, li, .pub-item div { overflow-wrap: anywhere; }
+        .w3-padding-large { padding: 16px 0 !important; }
+        .w3-justify { text-align: left !important; }
+        .contact-line { margin: 0; }
+        .pub-item { margin-bottom: 30px; padding-bottom: 18px; }
+        .img-box { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .img-box img {
+            width: 100%;
+            height: auto !important;
+            max-height: none;
+            margin-top: 0 !important;
+        }
+        .project-heading {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+        ul.custom-list { padding-left: 18px; }
+    }
   </style>
 </head>
 
@@ -120,7 +158,7 @@
             
             <p class="w3-padding-16">
               <!-- <a href="pdf/RuiJIN_CV_240921.pdf" class="w3-button w3-light-grey w3-round-small"><i class="fa fa-file-text"></i> CV</a> -->
-              <span style="margin: 0 15px; font-family: 'Roboto', sans-serif;">
+              <span class="contact-line">
                   jinr0003 <span style="color:#999">[at]</span> e.ntu.edu.sg
               </span>
               <!-- <a href="https://space.bilibili.com/320874399" class="w3-button w3-light-grey w3-round-small">Videos</a> -->
@@ -149,7 +187,7 @@
 , Yizhuo Yang, Jianping Li, Muqing Cao, Lihua Xie
             </div>
             <div>
-                <strong><em>Cyborg and Bionic Systems 2025</em></strong> | 
+                <strong><em>Cyborg and Bionic Systems, 2025</em></strong> |
                 <a class="paper-link" href="https://spj.science.org/doi/10.34133/cbsystems.0450">paper</a> | 
                 <a class="paper-link" href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0450">pdf</a>
             </div>
@@ -165,10 +203,11 @@
                 <strong>Rui Jin*</strong>, <a href="https://scholar.google.com/citations?user=nepkga0AAAAJ" class="paper-link">Yuman Gao*</a>, Haojian Lu, Fei Gao
               </div>
               <div>
-                  Accepted by <strong><em>IROS 2024</em></strong> | 
-                  <a class="paper-link" href="pdf/GS_Planner.pdf">pdf</a> | 
+                  Accepted by <strong><em>IROS, 2024</em></strong> |
+                  <a class="paper-link" href="pdf/GS_Planner.pdf">pdf</a> |
                   <a class="paper-link" href="https://www.bilibili.com/video/BV1e1421S7Kh/">video</a> |
-                  <a class="paper-link" href="https://arxiv.org/abs/2405.10142">arxiv</a>
+                  <a class="paper-link" href="https://arxiv.org/abs/2405.10142">arxiv</a> |
+                  <a class="paper-link" href="https://scholar.google.com/scholar?q=GS-Planner%3A+A+Gaussian-Splatting-based+Planning+Framework+for+Active+High-Fidelity+Reconstruction">citation</a>
               </div>
               <div class="img-box">
                   <img src="images/GS_cover.jpg" height="185">
@@ -182,8 +221,8 @@
                 Sheng Tao*, <strong>Rui Jin*</strong> (co-first author), et al, Fei Gao, Yuqi Zhang, Haojian Lu, Jicheng Yu, Zhen Gu
               </div>
               <div>
-                  <strong><em>Advanced Materials 2023</em></strong> (Frontispiece Paper, IF:39.4) | 
-                  <a class="paper-link" href="pdf/uFAST_new.pdf">pdf</a> | 
+                  <strong><em>Advanced Materials, 2023</em></strong> (Frontispiece Paper, IF:39.4) |
+                  <a class="paper-link" href="pdf/uFAST_new.pdf">pdf</a> |
                   <a class="paper-link" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/adma.202208648">paper</a>
               </div>
               <div class="img-box">
@@ -193,45 +232,77 @@
               </div>
           </div>
 
-          <div class="pub-item">
-              <div class="pub-title">Canfly: A Can-Sized Autonomous Mini Coaxial Helicopter</div>
-              <div>
-                <a href="https://github.com/PanNeng-ZJU" class="paper-link">Neng Pan</a>, <strong>Rui Jin</strong>, Chao Xu, Fei Gao
-              </div>
-              <div>
-                  <strong><em>IROS 2023</em></strong> | 
-                  <a class="paper-link" href="pdf/Canfly.pdf">pdf</a> | 
-                  <a class="paper-link" href="https://ieeexplore.ieee.org/document/10341490">paper</a> | 
-                  <a class="paper-link" href="https://www.bilibili.com/video/BV1EM411472H">video</a>
-              </div>
-              <div class="img-box">
-                  <img src="images/Canfly_cover.jpg" height="180">
-                  <img src="images/Canfly.gif" height="180">
-                  <img src="images/Canfly_gap.gif" height="180">
-              </div>
-          </div>
+        <div class="pub-item">
+            <div class="pub-title">QuadHand: A CoG-Compensated Quadrotor Aerial Manipulator with Whole-Body Motion Planning</div>
+            <div>
+              <strong>Rui Jin*</strong>, Ruiyang Liu*, Xinhang Xu, Yi Wang, Haotian Jin, Yizhuo Yang, Lihua Xie
+            </div>
+            <div>
+                <strong><em>Submitted to IROS, 2026</em></strong>
+            </div>
+            <!-- <ul class="custom-list">
+                <li>Designed QuadHand, a compact quadrotor aerial manipulator with a 3-DOF arm, gripper, and passive center-of-gravity compensation mechanism.</li>
+                <li>Proposed a multi-articulated robot-centric signed distance field representation to preserve geometric fidelity for close-proximity aerial manipulation.</li>
+                <li>Developed a spatiotemporal whole-body trajectory optimization framework for coupled base-arm planning in cluttered environments.</li>
+            </ul> -->
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">DuctAM: A Duct-Assisted Quadrotor-Based Aerial Manipulator Enabling High-Force Push-and-Pull Interactions</div>
+            <div>
+              Yi Wang*, <strong>Rui Jin*</strong> (co-first author), Xinhang Xu*, Haotian Jin, Ruiyang Liu, Yizhuo Yang, Lihua Xie
+            </div>
+            <div>
+                <strong><em>Submitted to IROS, 2026</em></strong>
+            </div>
+            <!-- <ul class="custom-list">
+                <li>Proposed DuctAM, a duct-assisted quadrotor aerial manipulator for high-force push-and-pull interaction tasks.</li>
+                <li>Developed an acceleration decomposition-based control scheme to decouple longitudinal force generation from pitch motion during sustained contact.</li>
+                <li>Validated the platform in real-world interaction tasks, including cart pushing, door closing, drawer opening, and high-friction crate pushing.</li>
+            </ul> -->
+        </div>
 
           <h3>Other Publications</h3>
           <ul class="custom-list">
             <li>
+                <strong>Hand-like autonomous flying robot for airborne grasping and interaction</strong><br>
+                <span style="font-size:0.95em">Yuze Wu, Fan Yang, <strong>Rui Jin</strong>, Yuhang Zhong, Junjie Wang, Xuankang Wu, Fei Gao</span><br>
+                <em>Nature Communications, 2026</em> | <a class="paper-link" href="https://www.nature.com/articles/s41467-026-68967-3">paper</a>
+            </li>
+            <li>
+                <strong>Fast Iterative Region Inflation for Computing Large 2-D/3-D Convex Regions of Obstacle-Free Space</strong><br>
+                <span style="font-size:0.95em">Qianhao Wang, Zhepei Wang, Mingyang Wang, Jialin Ji, Zhichao Han, Tianyue Wu, <strong>Rui Jin</strong>, Yuman Gao, Chao Xu, Fei Gao</span><br>
+                <em>T-RO, 2025</em> | <a class="paper-link" href="https://arxiv.org/pdf/2403.02977">pdf</a> | <a class="paper-link" href="https://doi.org/10.1109/TRO.2025.3562482">paper</a> | <a class="paper-link" href="https://arxiv.org/abs/2403.02977">arxiv</a>
+            </li>
+            <li>
+                <strong>HGS-Planner: Hierarchical Planning Framework for Active Scene Reconstruction Using 3D Gaussian Splatting</strong><br>
+                <span style="font-size:0.95em">Zijun Xu, <strong>Rui Jin</strong>, Ke Wu, Yi Zhao, Zhiwei Zhang, Jieru Zhao, Fei Gao, Zhongxue Gan, Wenchao Ding</span><br>
+                <em>ICRA, 2025</em> | <a class="paper-link" href="https://arxiv.org/pdf/2409.17624">pdf</a> | <a class="paper-link" href="https://doi.org/10.1109/ICRA55743.2025.11127649">paper</a> | <a class="paper-link" href="https://arxiv.org/abs/2409.17624">arxiv</a> | <a class="paper-link" href="https://zijunfdu.github.io/HGS-Planner/">project</a>
+            </li>
+            <li>
+                <strong>Canfly: A Can-Sized Autonomous Mini Coaxial Helicopter</strong><br>
+                <span style="font-size:0.95em"><a href="https://github.com/PanNeng-ZJU" class="paper-link">Neng Pan</a>, <strong>Rui Jin</strong>, Chao Xu, Fei Gao</span><br>
+                <em>IROS, 2023</em> | <a class="paper-link" href="pdf/Canfly.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10341490">paper</a> | <a class="paper-link" href="https://www.bilibili.com/video/BV1EM411472H">video</a>
+            </li>
+            <li>
                 <strong>Adaptive Tracking and Perching for Quadrotor in Dynamic Scenarios</strong><br>
                 <span style="font-size:0.95em">Yuman Gao, Jialin Ji, Qianhao Wang, <strong>Rui Jin</strong>, Yi Lin, Zhimeng Shang, Shaojie Shen, Chao Xu, Fei Gao</span><br>
-                <em>T-RO 2023</em> | <a class="paper-link" href="pdf/yuman2023tro.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10328688">paper</a>
+                <em>T-RO, 2023</em> | <a class="paper-link" href="pdf/yuman2023tro.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10328688">paper</a>
             </li>
             <li>
                 <strong>Modeling and Force Control of a Variable-Length Continuum Robot...</strong><br>
                 <span style="font-size:0.95em">Jingyu Zhang, Qin Fang, Lilu Liu, <strong>Rui Jin</strong>, Pingyu Xiang, Rong Xiong, Yue Wang, Haojian Lu</span><br>
-                <em>T-ASE 2024</em> | <a class="paper-link" href="pdf/jingyu2024tase.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10579861">paper</a>
+                <em>T-ASE, 2024</em> | <a class="paper-link" href="pdf/jingyu2024tase.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10579861">paper</a>
             </li>
             <li>
                 <strong>Soft Lightweight Small-Scale Parallel Robot With High-Precision Positioning</strong><br>
-                <span style="font-size:0.95em">Qin Fang, Jingyu Zhang, et al, <strong>Rui Jin</strong> (5th), Yue Wang, Rong Xiong, Zhefeng Gong, Haojian Lu</span><br>
-                <em>T-MECH 2023</em> | <a class="paper-link" href="pdf/qin2023tmech.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10122677">paper</a>
+                <span style="font-size:0.95em">Qin Fang, Jingyu Zhang, et al, <strong>Rui Jin</strong>, Yue Wang, Rong Xiong, Zhefeng Gong, Haojian Lu</span><br>
+                <em>T-MECH, 2023</em> | <a class="paper-link" href="pdf/qin2023tmech.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10122677">paper</a>
             </li>
             <li>
                 <strong>A Survey on Design, Actuation, Modeling, and Control of Continuum Robot</strong><br>
-                <span style="font-size:0.95em">Jinyu Zhang, Qin Fang, et al, <strong>Rui Jin</strong> (6th), Ke Qiu, Yue Wang, Rong Xiong, Haojian Lu</span><br>
-                <em>Cyborg and Bionic Systems 2022</em> (IF: 10.7) | <a class="paper-link" href="pdf/jingyu2022cbs.pdf">pdf</a> | <a class="paper-link" href="https://spj.science.org/doi/10.34133/2022/9754697">paper</a>
+                <span style="font-size:0.95em">Jinyu Zhang, Qin Fang, et al, <strong>Rui Jin</strong>, Ke Qiu, Yue Wang, Rong Xiong, Haojian Lu</span><br>
+                <em>Cyborg and Bionic Systems, 2022</em> (IF: 10.7) | <a class="paper-link" href="pdf/jingyu2022cbs.pdf">pdf</a> | <a class="paper-link" href="https://spj.science.org/doi/10.34133/2022/9754697">paper</a>
             </li>
           </ul>
       </div>
@@ -239,7 +310,7 @@
       <div class="w3-white w3-container w3-padding-32" id="projects">
           <h2>Projects</h2>
           <div class="pub-item">
-            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+            <div class="project-heading">
                 <div class="pub-title">Design and Control of a Coaxial Helicopter</div>
                 <div class="w3-text-grey"><em>Dec 2020 - Nov 2023</em></div>
             </div>
@@ -258,7 +329,7 @@
           </div>
 
           <div class="pub-item">
-              <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <div class="project-heading">
                   <div class="pub-title">Neural Collision Field for Efficient Trajectory Optimization</div>
                   <div class="w3-text-grey"><em>Jan 2023 - Present</em></div>
               </div>
@@ -269,11 +340,11 @@
           </div>
 
           <div class="pub-item">
-              <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <div class="project-heading">
                   <div class="pub-title">Transformer Robot</div>
                   <div class="w3-text-grey"><em>Jun 2018 - Jun 2019</em></div>
               </div>
-              <div><strong><em>China Robot Competition & National Training Program</em></strong></div>
+              <div><strong><em>China Robot Competition &amp; National Training Program</em></strong></div>
               <div class="img-box">
                   <img src="images/TRSF.gif" height="210">
                   <img src="images/TRFS.jpg" height="210">
@@ -290,7 +361,7 @@
             <li>2019, China Robot Competition, <strong>Top-tier Prize (Top 1%)</strong></li>
             <li>2019, National 3D innovative Design Competition, <strong>Top-tier Award of Shanxi Province (Top 3%)</strong></li>
             <li>2019, Fastgear Scholarship, <strong>Top-tier Prize (Top 1%)</strong></li>
-            <li>2018 & 2019, National Training Program of Innovation for Undergraduates, Outstanding Conclusion Award</li>
+            <li>2018 &amp; 2019, National Training Program of Innovation for Undergraduates, Outstanding Conclusion Award</li>
             <li>2018, Huawei Scholarship, First Prize <strong>(Top 1%)</strong></li>
             <li>2017 - 2019, Northwestern Polytechnical University Scholarship, First Prize (Top 10%)</li>
         </ul>
@@ -298,7 +369,7 @@
 
       <div class="w3-container w3-padding-32 w3-center" id="map">
         <a href="https://clustrmaps.com/site/1bzlp" title="Visit tracker">
-            <img src="//www.clustrmaps.com/map_v2.png?d=MUcGVRfh4u8y8PQSbnm1DWICwJInAsbH7Xjeu3TP5m0&cl=ffffff" style="max-width:100%; border-radius:5px;" />
+            <img src="//www.clustrmaps.com/map_v2.png?d=MUcGVRfh4u8y8PQSbnm1DWICwJInAsbH7Xjeu3TP5m0&amp;cl=ffffff" style="max-width:100%; border-radius:5px;" />
         </a>
       </div>
 
