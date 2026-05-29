@@ -26,29 +26,28 @@
     .gallery-content { max-width: 1000px; width: 100%; margin: 0 auto; }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      align-items: start;
+      align-items: stretch;
     }
     .gallery {
       border: 1px solid #f0f0f0;
       border-radius: 8px;
       overflow: hidden;
       background: #fff;
-    }
-    .gallery img {
-      display: block;
-      width: 100%;
-      height: auto;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     .media-frame {
+      display: block;
       position: relative;
       width: 100%;
       aspect-ratio: 6 / 5;
       overflow: hidden;
-      border-radius: 8px;
       background: #f7f7f7;
     }
+    .media-frame img,
     .media-frame iframe {
       position: absolute;
       inset: 0;
@@ -56,9 +55,18 @@
       height: 100%;
       border: 0;
     }
+    .media-frame img {
+      object-fit: cover;
+    }
     .desc {
       padding: 12px 14px;
       text-align: center;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid #f0f0f0;
+      flex: 1;
     }
 
     @media screen and (max-width: 992px) {
@@ -112,8 +120,6 @@
   <div class="gallery-content w3-container w3-padding-32">
   <h2>Moments</h2>
 
-  <br>
-
   <!-- <div class="w3-container w3-padding-32" >
     <img src="images/Gallery/xinjiang_dog.jpg" width="500px"/>
 
@@ -122,7 +128,7 @@
 
   <div class="gallery-grid">
     <div class="gallery">
-      <a target="_blank" href="images/Gallery/xinjiang_dog_new.jpg">
+      <a class="media-frame" target="_blank" href="images/Gallery/xinjiang_dog_new.jpg">
         <img src="images/Gallery/xinjiang_dog_new.jpg" alt="Wolong Bay" width="400" height="400">
       </a>
       <div class="desc">Altay, Xinjiang, 2023</div>
