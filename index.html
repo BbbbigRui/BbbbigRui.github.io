@@ -59,6 +59,107 @@
     .pub-title { font-size: 1.1em; font-weight: bold; color: #000; overflow-wrap: anywhere; }
     .project-heading { display:flex; justify-content:space-between; align-items:baseline; gap: 16px; }
     .contact-line { display: inline-block; margin: 0 15px; font-family: "Roboto", sans-serif; overflow-wrap: anywhere; }
+    .timeline { position: relative; margin-top: 18px; }
+    .timeline::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        left: 144px;
+        width: 2px;
+        background: #e8e8e8;
+    }
+    .timeline-item {
+        display: grid;
+        grid-template-columns: 90px 72px 1fr;
+        gap: 18px;
+        align-items: center;
+        position: relative;
+        padding: 8px 0 24px;
+    }
+    .timeline-item:last-child { padding-bottom: 8px; }
+    .timeline-date {
+        color: #666;
+        font-size: 0.92em;
+        font-weight: 500;
+        text-align: right;
+        line-height: 1.35;
+    }
+    .timeline-logo {
+        width: 72px;
+        height: 72px;
+        border: 1px solid #e6e6e6;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .timeline-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: var(--logo-position, center);
+        transform: translate(var(--logo-x, 0), var(--logo-y, 0)) scale(var(--logo-scale, 0.78));
+        display: block;
+    }
+    .timeline-sub {
+        align-items: center;
+        padding-top: 0;
+    }
+    .timeline-sub .timeline-branch {
+        grid-column: 2 / 4;
+        grid-row: 1;
+        justify-self: start;
+        align-self: center;
+        width: 72px;
+        height: 2px;
+        margin-left: 36px;
+        background: #e8e8e8;
+        position: relative;
+        z-index: 0;
+    }
+    .timeline-sub .timeline-branch::before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: -4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #b5b5b5;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px #e8e8e8;
+    }
+    .timeline-sub-content {
+        grid-column: 3;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 18px;
+        align-items: center;
+        min-width: 0;
+        position: relative;
+        z-index: 1;
+    }
+    .timeline-body {
+        min-width: 0;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .timeline-item:last-child .timeline-body { border-bottom: none; }
+    .timeline-body h3 {
+        margin: 0 0 4px;
+        font-size: 1.08em;
+        font-weight: 700;
+        color: #111;
+    }
+    .timeline-org { font-weight: 500; color: #333; overflow-wrap: anywhere; }
+    .timeline-note { color: #666; font-size: 0.95em; margin-top: 2px; overflow-wrap: anywhere; }
 
     /* 2. 移动端状态（<992px）：侧边栏隐藏，主内容铺满 */
     @media screen and (max-width: 992px) {
@@ -94,6 +195,48 @@
             align-items: flex-start;
             gap: 2px;
         }
+        .timeline::before { left: 32px; }
+        .timeline-item {
+            grid-template-columns: 64px 1fr;
+            gap: 14px;
+            align-items: start;
+            padding-bottom: 22px;
+        }
+        .timeline-date {
+            grid-column: 2;
+            text-align: left;
+            font-size: 0.88em;
+        }
+        .timeline-logo {
+            grid-column: 1;
+            grid-row: 1 / span 3;
+            width: 64px;
+            height: 64px;
+        }
+        .timeline-body {
+            grid-column: 2;
+            padding-bottom: 14px;
+        }
+        .timeline-sub .timeline-branch {
+            grid-column: 1 / 3;
+            grid-row: 2;
+            align-self: start;
+            width: 58px;
+            margin-top: 32px;
+            margin-left: 32px;
+        }
+        .timeline-sub-content {
+            grid-column: 2;
+            grid-row: 2;
+            grid-template-columns: 64px 1fr;
+            gap: 14px;
+            align-items: start;
+        }
+        .timeline-sub .timeline-logo {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+        .timeline-sub .timeline-body { grid-column: 2; }
         ul.custom-list { padding-left: 18px; }
     }
   </style>
@@ -110,8 +253,9 @@
     <a href="#news" class="w3-bar-item w3-button" onclick="w3_close()">News</a>
     <a href="#publications" class="w3-bar-item w3-button" onclick="w3_close()">Publications</a>
     <a href="#projects" class="w3-bar-item w3-button" onclick="w3_close()">Projects</a>
-    <a href="#award" class="w3-bar-item w3-button" onclick="w3_close()">Awards</a>
-    <a href="interests.html" class="w3-bar-item w3-button" onclick="w3_close()">Gallery</a>
+    <a href="#timeline" class="w3-bar-item w3-button" onclick="w3_close()">Timeline</a>
+    <!-- <a href="#award" class="w3-bar-item w3-button" onclick="w3_close()">Awards</a> -->
+    <a href="interests.html" class="w3-bar-item w3-button" onclick="w3_close()">Moments</a>
   </div>
 </nav>
 
@@ -150,7 +294,7 @@
                 Previously, I worked as a research assistant at PKU-Agibot Lab, Peking University, 
                 supervised by <a href="https://zsdonghao.github.io/" class="paper-link">Prof. Hao DONG</a>.
                 I obtained my M.Eng. in Control Science and Engineering at Zhejiang University, 
-                where I was co-supervised by <a href="http://zju-fast.com/fei-gao/" class="paper-link">Prof. Fei GAO</a> and Prof. Haojian LU. 
+                where I was co-supervised by <a href="https://feigao-robotics.com/" class="paper-link">Prof. Fei GAO</a> and Prof. Haojian LU.
                 I received my B.Eng. in Mechanical Engineering from Northwestern Polytechnical University.
                 My research interests primarily lie in aerial robotics and autonomous navigation.
               </p>
@@ -170,9 +314,10 @@
       <div class="w3-container w3-padding-32" id="news">
         <h2>News</h2>
         <ul class="custom-list">
-            <li>[2025/01] Started my Ph.D. journey at Nanyang Technological University (NTU)!</li>
+            <li>[2025/06] Will start venture capital research at Capital Today.</li>
+            <li>[2025/06] Started visiting research at Tongji University.</li>
+            <li>[2025/01] Started my Ph.D. journey at Nanyang Technological University (NTU).</li>
             <li>[2024/07] Started as a research assistant at PKU-Agibot Lab.</li>
-            <li>[2024/06] GS-Planner got accepted to <strong>IROS 2024</strong>.</li>
             <li>[2024/04] Graduated with a master's degree from ZJU.</li>
         </ul>
       </div>
@@ -187,13 +332,13 @@
 , Yizhuo Yang, Jianping Li, Muqing Cao, Lihua Xie
             </div>
             <div>
-                <strong><em>Cyborg and Bionic Systems, 2025</em></strong> |
+                <strong><em>Cyborg and Bionic Systems, 2025</em></strong> (2024 JIF: 18.1) |
                 <a class="paper-link" href="https://spj.science.org/doi/10.34133/cbsystems.0450">paper</a> | 
                 <a class="paper-link" href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0450">pdf</a>
             </div>
             <div class="img-box">
                 <img src="images/cbs_cover.jpg" alt="knotting cover" height="250">
-                <img src="images/cbs_fig2.jpg" alt="knotting methods" height="220" style="margin-top: 15px;">
+                <img src="images/cbs_fig2.jpg" alt="knotting methods" height="250">
             </div>
         </div>
 
@@ -203,7 +348,7 @@
                 <strong>Rui Jin*</strong>, <a href="https://scholar.google.com/citations?user=nepkga0AAAAJ" class="paper-link">Yuman Gao*</a>, Haojian Lu, Fei Gao
               </div>
               <div>
-                  Accepted by <strong><em>IROS, 2024</em></strong> |
+                  <strong><em>IROS, 2024</em></strong> |
                   <a class="paper-link" href="pdf/GS_Planner.pdf">pdf</a> |
                   <a class="paper-link" href="https://www.bilibili.com/video/BV1e1421S7Kh/">video</a> |
                   <a class="paper-link" href="https://arxiv.org/abs/2405.10142">arxiv</a> |
@@ -266,7 +411,7 @@
           <ul class="custom-list">
             <li>
                 <strong>Hand-like autonomous flying robot for airborne grasping and interaction</strong><br>
-                <span style="font-size:0.95em">Yuze Wu, Fan Yang, <strong>Rui Jin</strong>, Yuhang Zhong, Junjie Wang, Xuankang Wu, Fei Gao</span><br>
+                <span style="font-size:0.95em"><a href="https://scholar.google.com/citations?user=xYCz7sAAAAAJ&amp;hl=zh-CN" class="paper-link">Yuze Wu</a>, Fan Yang, <strong>Rui Jin</strong>, Yuhang Zhong, Junjie Wang, Xuankang Wu, Fei Gao</span><br>
                 <em>Nature Communications, 2026</em> | <a class="paper-link" href="https://www.nature.com/articles/s41467-026-68967-3">paper</a>
             </li>
             <li>
@@ -314,7 +459,7 @@
                 <div class="pub-title">Design and Control of a Coaxial Helicopter</div>
                 <div class="w3-text-grey"><em>Dec 2020 - Nov 2023</em></div>
             </div>
-            <div><strong><em>Master's Thesis</em></strong>, collaborated with Prof. <a href="https://ise.sysu.edu.cn/teacher/teacher02/1393268.htm" class="paper-link">Ximin Lyu</a>'s group</div>
+            <div><strong><em>Master's Thesis</em></strong>, collaborated with Prof. <a href="https://sysu-hilab.github.io/" class="paper-link">Ximin Lyu</a>'s group</div>
             <div class="img-box">
                 <img src="images/COAX_hard.gif" height="182">
                 <img src="images/COAX_rotor.jpg" height="182">
@@ -328,7 +473,7 @@
             </div>
           </div>
 
-          <div class="pub-item">
+          <!-- <div class="pub-item">
               <div class="project-heading">
                   <div class="pub-title">Neural Collision Field for Efficient Trajectory Optimization</div>
                   <div class="w3-text-grey"><em>Jan 2023 - Present</em></div>
@@ -337,7 +482,7 @@
               <div class="img-box">
                   <img src="images/NICO.gif" height="255">
               </div>
-          </div>
+          </div> -->
 
           <div class="pub-item">
               <div class="project-heading">
@@ -353,7 +498,103 @@
           </div>
       </div>
 
-      <div class="w3-container w3-padding-32" id="award">
+      <div class="w3-white w3-container w3-padding-32" id="timeline">
+        <h2>Timeline</h2>
+        <div class="timeline">
+          <article class="timeline-item timeline-sub">
+            <div class="timeline-date">During Ph.D.</div>
+            <div class="timeline-branch" aria-hidden="true"></div>
+            <div class="timeline-sub-content">
+              <div class="timeline-logo" style="--logo-scale: 1.08; --logo-x: -3px;">
+                <img src="images/logo/today.jpg" alt="Capital Today logo">
+              </div>
+              <div class="timeline-body">
+                <h3>Venture Capital Research</h3>
+                <div class="timeline-org"><a href="https://capitaltoday.com/" class="paper-link">Capital Today</a>, Shanghai</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item timeline-sub">
+            <div class="timeline-date">During Ph.D.</div>
+            <div class="timeline-branch" aria-hidden="true"></div>
+            <div class="timeline-sub-content">
+              <div class="timeline-logo" style="--logo-scale: 0.85;">
+                <img src="images/logo/tju.png" alt="Tongji University logo">
+              </div>
+              <div class="timeline-body">
+                <h3>Visiting Research</h3>
+                <div class="timeline-org">Tongji University</div>
+                <div class="timeline-note">Hosted by <a href="https://ntu-caokun.github.io/" class="paper-link">Prof. Kun CAO</a></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2025 - Present</div>
+            <div class="timeline-logo" style="--logo-scale: 0.75; --logo-y: 3px;">
+              <img src="images/logo/ntu.png" alt="Nanyang Technological University logo">
+            </div>
+            <div class="timeline-body">
+              <h3>Ph.D. Student</h3>
+              <div class="timeline-org">Nanyang Technological University</div>
+              <div class="timeline-note">Supervised by <a href="https://dr.ntu.edu.sg/entities/person/Xie-Lihua/" class="paper-link">Prof. Lihua XIE</a></div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Jul 2024 - Dec 2024</div>
+            <div class="timeline-logo" style="--logo-scale: 0.86;">
+              <img src="images/logo/pku.png" alt="Peking University logo">
+            </div>
+            <div class="timeline-body">
+              <h3>Research Assistant</h3>
+              <div class="timeline-org">PKU-Agibot Lab, Peking University</div>
+              <div class="timeline-note">Supervised by <a href="https://zsdonghao.github.io/" class="paper-link">Prof. Hao DONG</a></div>
+            </div>
+          </article>
+
+          <article class="timeline-item timeline-sub">
+            <div class="timeline-date">During M.Eng.</div>
+            <div class="timeline-branch" aria-hidden="true"></div>
+            <div class="timeline-sub-content">
+              <div class="timeline-logo" style="--logo-scale: 0.86;">
+                <img src="images/logo/sysu.png" alt="Sun Yat-sen University logo">
+              </div>
+              <div class="timeline-body">
+                <h3>Visiting Research</h3>
+                <div class="timeline-org">Sun Yat-sen University</div>
+                <div class="timeline-note">Six-month visit hosted by <a href="https://sysu-hilab.github.io/" class="paper-link">Prof. Ximin LYU</a></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2021 - 2024</div>
+            <div class="timeline-logo" style="--logo-scale: 0.95;">
+              <img src="images/logo/zju.png" alt="Zhejiang University logo">
+            </div>
+            <div class="timeline-body">
+              <h3>M.Eng. in Control Science and Engineering</h3>
+              <div class="timeline-org">Zhejiang University</div>
+              <div class="timeline-note">Co-supervised by <a href="https://feigao-robotics.com/" class="paper-link">Prof. Fei GAO</a> and <a href="https://person.zju.edu.cn/en/luhaojian" class="paper-link">Prof. Haojian LU</a></div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2017 - 2021</div>
+            <div class="timeline-logo" style="--logo-scale: 0.85;">
+              <img src="images/logo/npu.png" alt="Northwestern Polytechnical University logo">
+            </div>
+            <div class="timeline-body">
+              <h3>B.Eng. in Mechanical Engineering</h3>
+              <div class="timeline-org">Northwestern Polytechnical University</div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- <div class="w3-container w3-padding-32" id="award">
         <h2>Awards</h2>
         <ul class="custom-list">
             <li>2021, Outstanding Graduate of Northwestern Polytechnical University</li>
@@ -365,7 +606,7 @@
             <li>2018, Huawei Scholarship, First Prize <strong>(Top 1%)</strong></li>
             <li>2017 - 2019, Northwestern Polytechnical University Scholarship, First Prize (Top 10%)</li>
         </ul>
-      </div>  
+      </div>   -->
 
       <div class="w3-container w3-padding-32 w3-center" id="map">
         <a href="https://clustrmaps.com/site/1bzlp" title="Visit tracker">
