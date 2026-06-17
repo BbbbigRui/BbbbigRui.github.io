@@ -50,7 +50,31 @@
         border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         object-fit: cover; max-width: 100%;
     }
-    
+    .demo-visuals {
+        display: grid;
+        grid-template-columns: repeat(3, var(--demo-gif-width, 320px));
+        justify-content: start;
+    }
+    .demo-visuals figure {
+        margin: 0;
+        min-width: 0;
+    }
+    .demo-visuals img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16 / 9;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        object-fit: cover;
+    }
+    .demo-visuals figcaption {
+        margin-top: 6px;
+        font-size: 0.92em;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+    }
+
     /* 列表样式 */
     ul.custom-list { list-style-type: disc; padding-left: 20px; margin-top: 5px; }
     ul.custom-list li { margin-bottom: 8px; }
@@ -190,6 +214,8 @@
             max-height: none;
             margin-top: 0 !important;
         }
+        .demo-visuals { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .demo-visuals figure { width: 100%; }
         .project-heading {
             flex-direction: column;
             align-items: flex-start;
@@ -326,13 +352,71 @@
           <h2>Selected Publications</h2>
 
         <div class="pub-item">
+            <div class="pub-title">QuadHand: A CoG-Compensated Quadrotor Aerial Manipulator with Whole-Body Motion Planning</div>
+            <div>
+              <strong>Rui Jin*</strong>, Ruiyang Liu*, Xinhang Xu, Yi Wang, Haotian Jin, Yizhuo Yang, Lihua Xie
+            </div>
+            <div>
+                <strong><em>IROS, 2026</em></strong>
+            </div>
+            <div class="img-box demo-visuals" style="--demo-gif-width: 320px;" aria-label="QuadHand demonstrations">
+                <figure>
+                    <img src="images/quadhand/01_drone_rescue.gif" alt="QuadHand drone rescue demonstration">
+                    <figcaption>Drone Rescue</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/quadhand/03_cable_unplugging.gif" alt="QuadHand cable unplugging demonstration">
+                    <figcaption>Cable Unplugging</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/quadhand/04_gap_crossing_grasp.gif" alt="QuadHand gap crossing grasp demonstration">
+                    <figcaption>Gap Crossing Grasp</figcaption>
+                </figure>
+            </div>
+            <!-- <ul class="custom-list">
+                <li>Designed QuadHand, a compact quadrotor aerial manipulator with a 3-DOF arm, gripper, and passive center-of-gravity compensation mechanism.</li>
+                <li>Proposed a multi-articulated robot-centric signed distance field representation to preserve geometric fidelity for close-proximity aerial manipulation.</li>
+                <li>Developed a spatiotemporal whole-body trajectory optimization framework for coupled base-arm planning in cluttered environments.</li>
+            </ul> -->
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">DuctAM: A Duct-Assisted Quadrotor-Based Aerial Manipulator Enabling High-Force Push-and-Pull Interactions</div>
+            <div>
+              Yi Wang*, <strong>Rui Jin*</strong> (co-first author), Xinhang Xu*, Haotian Jin, Ruiyang Liu, Yizhuo Yang, Lihua Xie
+            </div>
+            <div>
+                <strong><em>IROS, 2026</em></strong>
+            </div>
+            <div class="img-box demo-visuals" style="--demo-gif-width: 320px;" aria-label="DuctAM demonstrations">
+                <figure>
+                    <img src="images/ductam/01_cart_pushing.gif" alt="DuctAM cart pushing demonstration">
+                    <figcaption>Cart Pushing</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/ductam/02_door_closing.gif" alt="DuctAM door closing demonstration">
+                    <figcaption>Door Closing</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/ductam/03_drawer_pulling.gif" alt="DuctAM drawer pulling demonstration">
+                    <figcaption>Drawer Pulling</figcaption>
+                </figure>
+            </div>
+            <!-- <ul class="custom-list">
+                <li>Proposed DuctAM, a duct-assisted quadrotor aerial manipulator for high-force push-and-pull interaction tasks.</li>
+                <li>Developed an acceleration decomposition-based control scheme to decouple longitudinal force generation from pitch motion during sustained contact.</li>
+                <li>Validated the platform in real-world interaction tasks, including cart pushing, door closing, drawer opening, and high-friction crate pushing.</li>
+            </ul> -->
+        </div>
+
+        <div class="pub-item">
             <div class="pub-title">Tethered UAV Autonomous Knotting on Environmental Structures for Transport</div>
             <div>
               <strong>Rui Jin*</strong>, <a href="https://www.linkedin.com/in/xinhang-xu-1b778934b/?originalSubdomain=sg" class="paper-link">Xinhang Xu*</a>
 , Yizhuo Yang, Jianping Li, Muqing Cao, Lihua Xie
             </div>
             <div>
-                <strong><em>Cyborg and Bionic Systems, 2025</em></strong> (2024 JIF: 18.1) |
+                <strong><em>Cyborg and Bionic Systems, 2025</em></strong> (IF: 20.9) |
                 <a class="paper-link" href="https://spj.science.org/doi/10.34133/cbsystems.0450">paper</a> | 
                 <a class="paper-link" href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0450">pdf</a>
             </div>
@@ -377,77 +461,47 @@
               </div>
           </div>
 
-        <div class="pub-item">
-            <div class="pub-title">QuadHand: A CoG-Compensated Quadrotor Aerial Manipulator with Whole-Body Motion Planning</div>
-            <div>
-              <strong>Rui Jin*</strong>, Ruiyang Liu*, Xinhang Xu, Yi Wang, Haotian Jin, Yizhuo Yang, Lihua Xie
-            </div>
-            <div>
-                <strong><em>IROS, 2026</em></strong>
-            </div>
-            <!-- <ul class="custom-list">
-                <li>Designed QuadHand, a compact quadrotor aerial manipulator with a 3-DOF arm, gripper, and passive center-of-gravity compensation mechanism.</li>
-                <li>Proposed a multi-articulated robot-centric signed distance field representation to preserve geometric fidelity for close-proximity aerial manipulation.</li>
-                <li>Developed a spatiotemporal whole-body trajectory optimization framework for coupled base-arm planning in cluttered environments.</li>
-            </ul> -->
-        </div>
-
-        <div class="pub-item">
-            <div class="pub-title">DuctAM: A Duct-Assisted Quadrotor-Based Aerial Manipulator Enabling High-Force Push-and-Pull Interactions</div>
-            <div>
-              Yi Wang*, <strong>Rui Jin*</strong> (co-first author), Xinhang Xu*, Haotian Jin, Ruiyang Liu, Yizhuo Yang, Lihua Xie
-            </div>
-            <div>
-                <strong><em>IROS, 2026</em></strong>
-            </div>
-            <!-- <ul class="custom-list">
-                <li>Proposed DuctAM, a duct-assisted quadrotor aerial manipulator for high-force push-and-pull interaction tasks.</li>
-                <li>Developed an acceleration decomposition-based control scheme to decouple longitudinal force generation from pitch motion during sustained contact.</li>
-                <li>Validated the platform in real-world interaction tasks, including cart pushing, door closing, drawer opening, and high-friction crate pushing.</li>
-            </ul> -->
-        </div>
-
           <h3>Other Publications</h3>
           <ul class="custom-list">
             <li>
                 <strong>Hand-like autonomous flying robot for airborne grasping and interaction</strong><br>
                 <span style="font-size:0.95em"><a href="https://scholar.google.com/citations?user=xYCz7sAAAAAJ&amp;hl=zh-CN" class="paper-link">Yuze Wu</a>, Fan Yang, <strong>Rui Jin</strong>, Yuhang Zhong, Junjie Wang, Xuankang Wu, Fei Gao</span><br>
-                <em>Nature Communications, 2026</em> | <a class="paper-link" href="https://www.nature.com/articles/s41467-026-68967-3">paper</a>
+                <strong><em>Nature Communications, 2026</em></strong> | <a class="paper-link" href="https://www.nature.com/articles/s41467-026-68967-3">paper</a>
             </li>
             <li>
                 <strong>Fast Iterative Region Inflation for Computing Large 2-D/3-D Convex Regions of Obstacle-Free Space</strong><br>
                 <span style="font-size:0.95em">Qianhao Wang, Zhepei Wang, Mingyang Wang, Jialin Ji, Zhichao Han, Tianyue Wu, <strong>Rui Jin</strong>, Yuman Gao, Chao Xu, Fei Gao</span><br>
-                <em>T-RO, 2025</em> | <a class="paper-link" href="https://arxiv.org/pdf/2403.02977">pdf</a> | <a class="paper-link" href="https://doi.org/10.1109/TRO.2025.3562482">paper</a> | <a class="paper-link" href="https://arxiv.org/abs/2403.02977">arxiv</a>
+                <strong><em>T-RO, 2025</em></strong> | <a class="paper-link" href="https://arxiv.org/pdf/2403.02977">pdf</a> | <a class="paper-link" href="https://doi.org/10.1109/TRO.2025.3562482">paper</a> | <a class="paper-link" href="https://arxiv.org/abs/2403.02977">arxiv</a>
             </li>
             <li>
                 <strong>HGS-Planner: Hierarchical Planning Framework for Active Scene Reconstruction Using 3D Gaussian Splatting</strong><br>
                 <span style="font-size:0.95em">Zijun Xu, <strong>Rui Jin</strong>, Ke Wu, Yi Zhao, Zhiwei Zhang, Jieru Zhao, Fei Gao, Zhongxue Gan, Wenchao Ding</span><br>
-                <em>ICRA, 2025</em> | <a class="paper-link" href="https://arxiv.org/pdf/2409.17624">pdf</a> | <a class="paper-link" href="https://doi.org/10.1109/ICRA55743.2025.11127649">paper</a> | <a class="paper-link" href="https://arxiv.org/abs/2409.17624">arxiv</a> | <a class="paper-link" href="https://zijunfdu.github.io/HGS-Planner/">project</a>
+                <strong><em>ICRA, 2025</em></strong> | <a class="paper-link" href="https://arxiv.org/pdf/2409.17624">pdf</a> | <a class="paper-link" href="https://doi.org/10.1109/ICRA55743.2025.11127649">paper</a> | <a class="paper-link" href="https://arxiv.org/abs/2409.17624">arxiv</a> | <a class="paper-link" href="https://zijunfdu.github.io/HGS-Planner/">project</a>
             </li>
             <li>
                 <strong>Canfly: A Can-Sized Autonomous Mini Coaxial Helicopter</strong><br>
                 <span style="font-size:0.95em"><a href="https://github.com/PanNeng-ZJU" class="paper-link">Neng Pan</a>, <strong>Rui Jin</strong>, Chao Xu, Fei Gao</span><br>
-                <em>IROS, 2023</em> | <a class="paper-link" href="pdf/Canfly.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10341490">paper</a> | <a class="paper-link" href="https://www.bilibili.com/video/BV1EM411472H">video</a>
+                <strong><em>IROS, 2023</em></strong> | <a class="paper-link" href="pdf/Canfly.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10341490">paper</a> | <a class="paper-link" href="https://www.bilibili.com/video/BV1EM411472H">video</a>
             </li>
             <li>
                 <strong>Adaptive Tracking and Perching for Quadrotor in Dynamic Scenarios</strong><br>
                 <span style="font-size:0.95em">Yuman Gao, Jialin Ji, Qianhao Wang, <strong>Rui Jin</strong>, Yi Lin, Zhimeng Shang, Shaojie Shen, Chao Xu, Fei Gao</span><br>
-                <em>T-RO, 2023</em> | <a class="paper-link" href="pdf/yuman2023tro.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10328688">paper</a>
+                <strong><em>T-RO, 2023</em></strong> | <a class="paper-link" href="pdf/yuman2023tro.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10328688">paper</a>
             </li>
             <li>
                 <strong>Modeling and Force Control of a Variable-Length Continuum Robot...</strong><br>
                 <span style="font-size:0.95em">Jingyu Zhang, Qin Fang, Lilu Liu, <strong>Rui Jin</strong>, Pingyu Xiang, Rong Xiong, Yue Wang, Haojian Lu</span><br>
-                <em>T-ASE, 2024</em> | <a class="paper-link" href="pdf/jingyu2024tase.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10579861">paper</a>
+                <strong><em>T-ASE, 2024</em></strong> | <a class="paper-link" href="pdf/jingyu2024tase.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10579861">paper</a>
             </li>
             <li>
                 <strong>Soft Lightweight Small-Scale Parallel Robot With High-Precision Positioning</strong><br>
                 <span style="font-size:0.95em">Qin Fang, Jingyu Zhang, et al, <strong>Rui Jin</strong>, Yue Wang, Rong Xiong, Zhefeng Gong, Haojian Lu</span><br>
-                <em>T-MECH, 2023</em> | <a class="paper-link" href="pdf/qin2023tmech.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10122677">paper</a>
+                <strong><em>T-MECH, 2023</em></strong> | <a class="paper-link" href="pdf/qin2023tmech.pdf">pdf</a> | <a class="paper-link" href="https://ieeexplore.ieee.org/document/10122677">paper</a>
             </li>
             <li>
                 <strong>A Survey on Design, Actuation, Modeling, and Control of Continuum Robot</strong><br>
                 <span style="font-size:0.95em">Jinyu Zhang, Qin Fang, et al, <strong>Rui Jin</strong>, Ke Qiu, Yue Wang, Rong Xiong, Haojian Lu</span><br>
-                <em>Cyborg and Bionic Systems, 2022</em> (IF: 10.7) | <a class="paper-link" href="pdf/jingyu2022cbs.pdf">pdf</a> | <a class="paper-link" href="https://spj.science.org/doi/10.34133/2022/9754697">paper</a>
+                <strong><em>Cyborg and Bionic Systems, 2022</em></strong> (IF: 10.7) | <a class="paper-link" href="pdf/jingyu2022cbs.pdf">pdf</a> | <a class="paper-link" href="https://spj.science.org/doi/10.34133/2022/9754697">paper</a>
             </li>
           </ul>
       </div>
