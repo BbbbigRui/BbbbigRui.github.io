@@ -187,6 +187,7 @@
 
     /* Visitor map */
     #map { padding-top: 16px; padding-bottom: 32px; }
+    .visitor-map-frame { width: 100%; max-width: 600px; margin: 0 auto; }
 
     /* 2. 移动端状态（<992px）：侧边栏隐藏，主内容铺满 */
     @media screen and (max-width: 992px) {
@@ -668,11 +669,13 @@
 
       <!-- Visitor map: https://mapmyvisitors.com/ -->
       <div class="w3-container w3-center" id="map">
-        <script
-          type="text/javascript"
-          id="mapmyvisitors"
-          src="https://mapmyvisitors.com/map.js?d=Nj_p5FRylCpUlcNaj-kkLh7TDrjOg9_vLor8d7wUd_Q&amp;cl=ffffff&amp;w=a">
-        </script>
+        <div class="visitor-map-frame">
+          <script
+            type="text/javascript"
+            id="mapmyvisitors"
+            src="https://mapmyvisitors.com/map.js?d=Nj_p5FRylCpUlcNaj-kkLh7TDrjOg9_vLor8d7wUd_Q&amp;cl=ffffff&amp;w=a">
+          </script>
+        </div>
       </div>
 
 
