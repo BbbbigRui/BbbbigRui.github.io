@@ -1,0 +1,29 @@
+# Unreferenced local assets. Remove the matching rule before using an asset.
+# Resources referenced in HTML comments are kept in version control.
+
+# Unused stylesheets and scripts
+/font-awesome.min.css
+/jquery-1.11.1.min.js
+/jquery.min.js
+/stylesheet.css
+
+# Unused documents
+/RuiJIN_CV.pdf
+/jr_cv.pdf
+/papers.pdf
+/pdf/RP_GS_LOMA.pdf
+/pdf/papers.pdf
+
+# Unused images and demonstrations
+/images/Canfly.gif
+/images/Canfly_cover.jpg
+/images/Canfly_gap.gif
+/images/RuiJin.jpg
+/images/map.png
+/images/ductam/04_crate_pushing_sandpaper.gif
+/images/ductam/05_figure_eight_tracking.gif
+/images/ductam/06_longitudinal_force_measurement.gif
+/images/quadhand/02_plier_placement.gif
+/images/quadhand/05_7_consecutive_narrow_gap_crossings.gif
+/images/quadhand/06_simulation_benchmark.gif
+/images/quadhand/07_figure_eight_trajectory_tracking.gif
