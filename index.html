@@ -13,14 +13,15 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&amp;display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/icons.png">
+  <link rel="stylesheet" href="navigation.css">
+  <script src="navigation.js" defer></script>
 
   <style>
     /* 全局字体设置 */
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: visible; }
     body, h1, h2, h3, h4, h5, h6, .w3-wide { font-family: "Montserrat", sans-serif; }
-    .w3-sidebar a { font-family: "Roboto", sans-serif; }
-    body { color: #333; line-height: 1.6; overflow-x: hidden; }
+    body { color: #333; line-height: 1.6; }
 
     /* 链接样式 */
     a { text-decoration: none; transition: opacity 0.2s ease; }
@@ -29,9 +30,8 @@
     .w3-content { width: 100%; }
     .section-container { width: 100%; }
 
-    /* 布局修正核心代码 */
-    /* 1. 默认状态（电脑）：侧边栏存在，主内容左边距 150px */
-    .main-content-wrapper { margin-left: 150px; }
+    /* Center the existing content below the top navigation. */
+    .main-content-wrapper { margin-left: 0; }
 
     /* NEW 标签样式 */
     .badge-new {
@@ -52,7 +52,7 @@
     }
     .demo-visuals {
         display: grid;
-        grid-template-columns: repeat(3, var(--demo-gif-width, 320px));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         justify-content: start;
     }
     .demo-visuals figure {
@@ -189,16 +189,10 @@
     #map { padding-top: 16px; padding-bottom: 32px; }
     .visitor-map-frame { width: 100%; max-width: 400px; margin: 0 auto; }
 
-    /* 2. 移动端状态（<992px）：侧边栏隐藏，主内容铺满 */
-    @media screen and (max-width: 992px) {
-        .main-content-wrapper { margin-left: 0 !important; }
-        .w3-sidebar { display: none; }
-    }
-
     @media screen and (max-width: 700px) {
         .w3-container { padding-left: 18px; padding-right: 18px; }
         .w3-container, .w3-row, .w3-col { max-width: 100%; min-width: 0; }
-        .w3-main, .w3-content { max-width: 100%; overflow-x: hidden; }
+        .w3-main, .w3-content { max-width: 100%; }
         .w3-row { margin-left: 0; margin-right: 0; }
         .w3-col { float: none !important; width: 100% !important; }
         #home .w3-col, #home p, #home img { max-width: 100%; }
@@ -274,32 +268,21 @@
 
 <body>
 
-<nav class="w3-sidebar w3-bar-block w3-black w3-collapse" style="z-index:3;width:150px; left:0; top:0;" id="mySidebar">
-  <div class="w3-container w3-display-container w3-padding-16">
-    <h3><b>RUI</b></h3>
+<header class="homepage-header">
+  <div class="homepage-header-inner">
+    <a class="homepage-wordmark" href="#home" aria-label="Rui Jin — Home">Rui Jin</a>
+    <button class="homepage-menu-toggle" type="button" aria-expanded="false" aria-controls="homepage-navigation" hidden>Menu</button>
+    <nav class="homepage-navigation" id="homepage-navigation" aria-label="Main navigation">
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#timeline">Timeline</a>
+      <a href="interests.html">Moments <span aria-hidden="true">↗</span></a>
+    </nav>
   </div>
-  <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold">
-    <a href="#home" class="w3-bar-item w3-button" onclick="w3_close()">Home</a>
-    <!-- <a href="#news" class="w3-bar-item w3-button" onclick="w3_close()">News</a> -->
-    <a href="#publications" class="w3-bar-item w3-button" onclick="w3_close()">Publications</a>
-    <a href="#projects" class="w3-bar-item w3-button" onclick="w3_close()">Projects</a>
-    <a href="#timeline" class="w3-bar-item w3-button" onclick="w3_close()">Timeline</a>
-    <!-- <a href="#award" class="w3-bar-item w3-button" onclick="w3_close()">Awards</a> -->
-    <a href="interests.html" class="w3-bar-item w3-button" onclick="w3_close()">Moments</a>
-  </div>
-</nav>
-
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <div class="w3-bar-item w3-padding-24">RUI</div>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><b>≡</b></a>
 </header>
-
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <div class="w3-main main-content-wrapper">
 
-  <div class="w3-hide-large" style="margin-top:83px"></div>
-  
   <div class="w3-content" style="max-width:1000px">
 
 
@@ -316,18 +299,17 @@
           <div class="w3-col m8 w3-padding-large">
             <div class="w3-justify">
               <p>
-                Welcome! I'm Rui JIN, currently a Ph.D. student at the School of Electrical and Electronic Engineering, 
-                Nanyang Technological University, 
-                supervised by <a href="https://dr.ntu.edu.sg/entities/person/Xie-Lihua/" class="paper-link">Prof. Lihua XIE</a>.
-                I am now a venture capital intern at <a href="https://capitaltoday.com/" class="paper-link">Capital Today</a>.
+                I'm Rui JIN, a Ph.D. student in EEE at Nanyang Technological University,
+                advised by <a href="https://dr.ntu.edu.sg/entities/person/Xie-Lihua/" class="paper-link">Prof. Lihua XIE</a>,
+                and a venture capital intern at <a href="https://capitaltoday.com/" class="paper-link">Capital Today</a>.
               </p>
               <p>
-                Previously, I worked as a research assistant at PKU-Agibot Lab, Peking University, 
-                supervised by <a href="https://zsdonghao.github.io/" class="paper-link">Prof. Hao DONG</a>.
-                I obtained my M.Eng. in Control Science and Engineering at Zhejiang University, 
-                where I was co-supervised by <a href="https://feigao-robotics.com/" class="paper-link">Prof. Fei GAO</a> and Prof. Haojian LU.
-                I received my B.Eng. in Mechanical Engineering from Northwestern Polytechnical University.
-                My research primarily focuses on aerial manipulation. I am also interested in venture capital investment in embodied AI, please feel free to reach out.
+                Previously, I was a research assistant at Peking University's PKU-Agibot Lab under
+                <a href="https://zsdonghao.github.io/" class="paper-link">Prof. Hao DONG</a>.
+                I hold an M.Eng. in Control Science and Engineering from Zhejiang University
+                (advised by <a href="https://feigao-robotics.com/" class="paper-link">Prof. Fei GAO</a> and Prof. Haojian LU)
+                and a B.Eng. in Mechanical Engineering from Northwestern Polytechnical University.
+                My research focuses on aerial manipulation. I also explore venture capital investment in embodied AI. Feel free to reach out!
               </p>
             </div>
             
@@ -679,16 +661,7 @@
       </div>
 
 
-  </div> </div> <script>
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-</script>
+  </div> </div>
 
 </body>
 </html>

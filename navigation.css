@@ -1,0 +1,60 @@
+/* Loaded only by the original homepage; the rest of its styling is unchanged. */
+html { scroll-padding-top: calc(var(--homepage-header-height, 73px) + 20px); }
+
+.homepage-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fafaf8;
+  border-bottom: 1px solid #dedfdb;
+  color: #202526;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+.homepage-header:not(.menu-enabled) { position: static; }
+.homepage-header-inner {
+  width: min(1000px, calc(100% - 40px));
+  min-height: 72px;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.homepage-header .homepage-wordmark {
+  color: #202526;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -.5px;
+  white-space: nowrap;
+}
+.homepage-navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; }
+.homepage-navigation a { color: #5d656a; padding-block: 12px; font-size: 14px; font-weight: 500; }
+.homepage-header a { text-decoration: none; }
+.homepage-header a:hover { color: #35617f; opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.homepage-header :focus-visible { outline: 3px solid #35617f; outline-offset: 5px; border-radius: 3px; }
+.homepage-menu-toggle {
+  border: 1px solid #dedfdb;
+  border-radius: 6px;
+  background: transparent;
+  color: #202526;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.homepage-menu-toggle[hidden] { display: none !important; }
+
+@media (max-width: 620px) {
+  .homepage-header-inner { min-height: 64px; gap: 0 16px; }
+  .homepage-header .homepage-wordmark { min-height: 64px; display: flex; align-items: center; }
+  .homepage-navigation { width: 100%; justify-content: space-between; gap: 10px; padding-bottom: 8px; }
+  .homepage-navigation a { font-size: 13px; padding-block: 10px; }
+  .menu-enabled .homepage-navigation { display: none; }
+  .menu-enabled .homepage-navigation.is-open { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .homepage-header a { transition: none; }
+}
