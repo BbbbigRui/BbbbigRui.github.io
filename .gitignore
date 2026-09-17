@@ -1,3 +1,6 @@
+# Private local files
+/private_files/
+
 # Unreferenced local assets. Remove the matching rule before using an asset.
 # Resources referenced in HTML comments are kept in version control.
 

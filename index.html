@@ -74,11 +74,28 @@
         color: #333;
         text-align: center;
     }
+    .publication-visuals {
+        display: grid;
+        grid-template-columns: var(--visual-columns, minmax(0, 1fr));
+        gap: 12px;
+        width: 100%;
+        max-width: 840px;
+        align-items: start;
+    }
+    .publication-visuals img {
+        display: block;
+        width: 100%;
+        height: auto;
+        min-width: 0;
+        aspect-ratio: auto;
+        object-fit: contain;
+    }
 
     /* 列表样式 */
     ul.custom-list { list-style-type: disc; padding-left: 20px; margin-top: 5px; }
     ul.custom-list li { margin-bottom: 8px; }
     .pub-item { margin-bottom: 40px; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; }
+    #publications .pub-item { margin-bottom: 28px; padding-bottom: 16px; }
     .pub-item:last-child { border-bottom: none; }
     .pub-title { font-size: 1.1em; font-weight: bold; color: #000; overflow-wrap: anywhere; }
     .project-heading { display:flex; justify-content:space-between; align-items:baseline; gap: 16px; }
@@ -205,6 +222,7 @@
         .w3-justify { text-align: left !important; }
         .contact-line { margin: 0; }
         .pub-item { margin-bottom: 30px; padding-bottom: 18px; }
+        #publications .pub-item { margin-bottom: 22px; padding-bottom: 12px; }
         .img-box { display: grid; grid-template-columns: 1fr; gap: 12px; }
         .img-box img {
             width: 100%;
@@ -214,6 +232,10 @@
         }
         .demo-visuals { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .demo-visuals figure { width: 100%; }
+        .publication-visuals {
+            grid-template-columns: minmax(0, 1fr);
+            max-width: 480px;
+        }
         .project-heading {
             flex-direction: column;
             align-items: flex-start;
@@ -339,6 +361,33 @@
           <h2>Publications</h2>
 
         <div class="pub-item">
+            <div class="pub-title">From Local Whole-Body VLA Behaviors to Scene-Scale Aerial Manipulation</div>
+            <div>
+              Weixiang Guo*, <strong>Rui Jin*</strong>, Haotian Jin, Xinhang Xu, Ruiyang Liu, Haoran Zhao, Yi Wang, Weiqi Gai, Kun Cao, Lihua Xie
+            </div>
+            <div>
+                <strong><em>submitted to ICRA 2027</em></strong>
+            </div>
+            <div class="img-box publication-visuals">
+                <img src="images/icra2027/vla_fig1.jpg" alt="VLA Fig. 1: Scene-scale aerial manipulation with bottle grasping and plant watering" width="2195" height="997">
+            </div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Whole-Body Aerial Grasping and Lifting via Partial Visual Observations</div>
+            <div>
+              Jiaye Jin*, <strong>Rui Jin*</strong>, Xinhang Xu, Haotian Jin, Ruiyang Liu, Yi Wang, Jiayan Zhao, Kun Cao, Lihua Xie
+            </div>
+            <div>
+                <strong><em>submitted to ICRA 2027</em></strong>
+            </div>
+            <div class="img-box publication-visuals" style="--visual-columns: minmax(0, 1.219921fr) minmax(0, 1.614325fr);">
+                <img src="images/icra2027/grasp_fig1.png" alt="Grasp Fig. 1: Aerial grasping and lifting scenario" width="1237" height="1014">
+                <img src="images/icra2027/grasp_fig3.png" alt="Grasp Fig. 3: Recurrent teacher-student framework for whole-body aerial grasping" width="1758" height="1089">
+            </div>
+        </div>
+
+        <div class="pub-item">
             <div class="pub-title">QuadHand: A Compact Quadrotor Aerial Manipulator with MRC-SDF-Based Whole-Body Motion Planning</div>
             <div>
               <strong>Rui Jin*</strong>, Ruiyang Liu*, Xinhang Xu, Yi Wang, Haotian Jin, Yizhuo Yang, Lihua Xie
@@ -346,17 +395,17 @@
             <div>
                 <strong><em>IROS, 2026</em></strong>
             </div>
-            <div class="img-box demo-visuals" style="--demo-gif-width: 320px;" aria-label="QuadHand demonstrations">
+            <div class="img-box demo-visuals publication-visuals" style="--visual-columns: repeat(3, minmax(0, 1fr));" aria-label="QuadHand demonstrations">
                 <figure>
-                    <img src="images/quadhand/01_drone_rescue.gif" alt="QuadHand drone rescue demonstration">
+                    <img src="images/quadhand/01_drone_rescue.gif" alt="QuadHand drone rescue demonstration" width="320" height="180">
                     <figcaption>Drone Rescue</figcaption>
                 </figure>
                 <figure>
-                    <img src="images/quadhand/03_cable_unplugging.gif" alt="QuadHand cable unplugging demonstration">
+                    <img src="images/quadhand/03_cable_unplugging.gif" alt="QuadHand cable unplugging demonstration" width="320" height="180">
                     <figcaption>Cable Unplugging</figcaption>
                 </figure>
                 <figure>
-                    <img src="images/quadhand/04_gap_crossing_grasp.gif" alt="QuadHand gap crossing grasp demonstration">
+                    <img src="images/quadhand/04_gap_crossing_grasp.gif" alt="QuadHand gap crossing grasp demonstration" width="320" height="180">
                     <figcaption>Gap Crossing Grasp</figcaption>
                 </figure>
             </div>
@@ -370,22 +419,23 @@
         <div class="pub-item">
             <div class="pub-title">DuctAM: A Duct-Assisted Quadrotor-Based Aerial Manipulator Enabling High-Force Push-and-Pull Interactions</div>
             <div>
-              Yi Wang*, <strong>Rui Jin*</strong> (co-first author), Xinhang Xu*, Haotian Jin, Ruiyang Liu, Yizhuo Yang, Lihua Xie
+              Yi Wang*, <strong>Rui Jin*</strong>, Xinhang Xu*, Haotian Jin, Ruiyang Liu, Yizhuo Yang, Lihua Xie
             </div>
             <div>
-                <strong><em>IROS, 2026</em></strong>
+                <strong><em>IROS, 2026</em></strong> |
+                <a class="paper-link" href="https://arxiv.org/abs/2609.15861v1">arxiv</a>
             </div>
-            <div class="img-box demo-visuals" style="--demo-gif-width: 320px;" aria-label="DuctAM demonstrations">
+            <div class="img-box demo-visuals publication-visuals" style="--visual-columns: repeat(3, minmax(0, 1fr));" aria-label="DuctAM demonstrations">
                 <figure>
-                    <img src="images/ductam/01_cart_pushing.gif" alt="DuctAM cart pushing demonstration">
+                    <img src="images/ductam/01_cart_pushing.gif" alt="DuctAM cart pushing demonstration" width="320" height="180">
                     <figcaption>Cart Pushing</figcaption>
                 </figure>
                 <figure>
-                    <img src="images/ductam/02_door_closing.gif" alt="DuctAM door closing demonstration">
+                    <img src="images/ductam/02_door_closing.gif" alt="DuctAM door closing demonstration" width="320" height="180">
                     <figcaption>Door Closing</figcaption>
                 </figure>
                 <figure>
-                    <img src="images/ductam/03_drawer_pulling.gif" alt="DuctAM drawer pulling demonstration">
+                    <img src="images/ductam/03_drawer_pulling.gif" alt="DuctAM drawer pulling demonstration" width="320" height="180">
                     <figcaption>Drawer Pulling</figcaption>
                 </figure>
             </div>
@@ -407,9 +457,9 @@
                 <a class="paper-link" href="https://spj.science.org/doi/10.34133/cbsystems.0450">paper</a> | 
                 <a class="paper-link" href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0450">pdf</a>
             </div>
-            <div class="img-box">
-                <img src="images/cbs_cover.jpg" alt="knotting cover" height="250">
-                <img src="images/cbs_fig2.jpg" alt="knotting methods" height="250">
+            <div class="img-box publication-visuals" style="--visual-columns: minmax(0, 1.060967fr) minmax(0, 1.579205fr);">
+                <img src="images/cbs_cover.jpg" alt="knotting cover" width="3202" height="3018">
+                <img src="images/cbs_fig2.jpg" alt="knotting methods" width="2582" height="1635">
             </div>
         </div>
 
@@ -422,29 +472,28 @@
                   <strong><em>IROS, 2024</em></strong> |
                   <a class="paper-link" href="pdf/GS_Planner.pdf">pdf</a> |
                   <a class="paper-link" href="https://www.bilibili.com/video/BV1e1421S7Kh/">video</a> |
-                  <a class="paper-link" href="https://arxiv.org/abs/2405.10142">arxiv</a> |
-                  <a class="paper-link" href="https://scholar.google.com/scholar?q=GS-Planner%3A+A+Gaussian-Splatting-based+Planning+Framework+for+Active+High-Fidelity+Reconstruction">citation</a>
+                  <a class="paper-link" href="https://arxiv.org/abs/2405.10142">arxiv</a>
               </div>
-              <div class="img-box">
-                  <img src="images/GS_cover.jpg" height="185">
-                  <img src="images/GS_Planner.gif" height="185">
+              <div class="img-box publication-visuals" style="--visual-columns: repeat(2, minmax(0, 1fr));">
+                  <img src="images/GS_cover.jpg" alt="GS-Planner reconstruction overview" width="2684" height="1510">
+                  <img src="images/GS_Planner.gif" alt="GS-Planner active reconstruction demonstration" width="480" height="270">
               </div>
           </div>
 
           <div class="pub-item">
               <div class="pub-title">Unmanned Aerial Vehicle Mediated Drug Delivery for First Aid</div>
               <div>
-                Sheng Tao*, <strong>Rui Jin*</strong> (co-first author), et al, Fei Gao, Yuqi Zhang, Haojian Lu, Jicheng Yu, Zhen Gu
+                Sheng Tao*, <strong>Rui Jin*</strong>, et al, Fei Gao, Yuqi Zhang, Haojian Lu, Jicheng Yu, Zhen Gu
               </div>
               <div>
                   <strong><em>Advanced Materials, 2023</em></strong> (Frontispiece Paper, IF:39.4) |
                   <a class="paper-link" href="pdf/uFAST_new.pdf">pdf</a> |
                   <a class="paper-link" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/adma.202208648">paper</a>
               </div>
-              <div class="img-box">
-                  <img src="images/uFAST_cover.jpg" height="200">
-                  <img src="images/uFAST_head.jpg" height="200">
-                  <img src="images/CTMA.gif" height="200">
+              <div class="img-box publication-visuals" style="--visual-columns: minmax(0, 0.768640fr) minmax(0, 1.387324fr) minmax(0, 1.25fr);">
+                  <img src="images/uFAST_cover.jpg" alt="UAV drug delivery frontispiece" width="1000" height="1301">
+                  <img src="images/uFAST_head.jpg" alt="UAV drug delivery system overview" width="394" height="284">
+                  <img src="images/CTMA.gif" alt="UAV drug delivery demonstration" width="500" height="400">
               </div>
           </div>
 
