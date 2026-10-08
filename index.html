@@ -42,13 +42,17 @@
 
     /* 图片容器 */
     .img-box {
+        --image-row-min-height: 120px;
+        --image-row-max-height: 240px;
         display: flex; flex-wrap: wrap; gap: 15px;
         margin-top: 10px; margin-bottom: 15px;
         align-items: flex-start;
     }
     .img-box img {
         border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        object-fit: cover; max-width: 100%;
+        object-fit: contain; max-width: 100%;
+        min-height: var(--image-row-min-height);
+        max-height: var(--image-row-max-height);
     }
     .demo-visuals {
         display: grid;
@@ -78,13 +82,13 @@
         display: grid;
         grid-template-columns: var(--visual-columns, minmax(0, 1fr));
         gap: 12px;
-        width: 100%;
-        max-width: 840px;
+        width: fit-content;
+        max-width: min(100%, 840px);
         align-items: start;
     }
     .publication-visuals img {
         display: block;
-        width: 100%;
+        width: auto;
         height: auto;
         min-width: 0;
         aspect-ratio: auto;
@@ -223,18 +227,22 @@
         .contact-line { margin: 0; }
         .pub-item { margin-bottom: 30px; padding-bottom: 18px; }
         #publications .pub-item { margin-bottom: 22px; padding-bottom: 12px; }
-        .img-box { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .img-box {
+            --image-row-min-height: 80px;
+            --image-row-max-height: 180px;
+            display: grid; grid-template-columns: 1fr; gap: 12px;
+        }
         .img-box img {
-            width: 100%;
+            width: auto;
             height: auto !important;
-            max-height: none;
+            max-height: var(--image-row-max-height);
             margin-top: 0 !important;
         }
         .demo-visuals { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .demo-visuals figure { width: 100%; }
         .publication-visuals {
             grid-template-columns: minmax(0, 1fr);
-            max-width: 480px;
+            max-width: min(100%, 480px);
         }
         .project-heading {
             flex-direction: column;
@@ -322,8 +330,7 @@
             <div class="w3-justify">
               <p>
                 I'm Rui JIN, a Ph.D. student in EEE at Nanyang Technological University,
-                advised by <a href="https://dr.ntu.edu.sg/entities/person/Xie-Lihua/" class="paper-link">Prof. Lihua XIE</a>,
-                and an investment intern at <a href="https://capitaltoday.com/" class="paper-link">Capital Today</a>.
+                advised by <a href="https://dr.ntu.edu.sg/entities/person/Xie-Lihua/" class="paper-link">Prof. Lihua XIE</a>.
               </p>
               <p>
                 I earned my M.Eng. from Zhejiang University, advised by
@@ -331,6 +338,7 @@
                 and my B.Eng. from Northwestern Polytechnical University.
                 I also worked as a research assistant at Peking University's PKU-Agibot Lab under
                 <a href="https://zsdonghao.github.io/" class="paper-link">Prof. Hao DONG</a>.
+                I previously worked as an investment intern at <a href="https://capitaltoday.com/" class="paper-link">Capital Today</a>.
                 My research focuses on aerial manipulation. I also explore venture capital investment in robotics / AI. Feel free to reach out!
               </p>
             </div>
@@ -503,6 +511,15 @@
                 <strong>Hand-like autonomous flying robot for airborne grasping and interaction</strong><br>
                 <span style="font-size:0.95em"><a href="https://scholar.google.com/citations?user=xYCz7sAAAAAJ&amp;hl=zh-CN" class="paper-link">Yuze Wu</a>, Fan Yang, <strong>Rui Jin</strong>, Yuhang Zhong, Junjie Wang, Xuankang Wu, Fei Gao</span><br>
                 <strong><em>Nature Communications, 2026</em></strong> | <a class="paper-link" href="https://www.nature.com/articles/s41467-026-68967-3">paper</a>
+                <figure class="img-box publication-visuals" style="grid-template-columns: minmax(0, 1.286344fr) minmax(0, 1.775fr); margin-left:0; margin-right:0;">
+                    <a href="images/hi_arm_perching.png" aria-label="View the full-size HI-ARM bamboo perching image">
+                        <img src="images/hi_arm_perching.png" alt="HI-ARM grasping and perching on a bamboo stalk" width="876" height="681" loading="lazy" decoding="async">
+                    </a>
+                    <img src="images/hi_arm_grasp.gif" alt="HI-ARM fingertip grasping demonstration" width="426" height="240" loading="lazy" decoding="async">
+                    <!-- Perching image: Wu et al., Nature Communications (2026), Figure 1 (cropped).
+                         Source: https://www.nature.com/articles/s41467-026-68967-3/figures/1
+                         License: https://creativecommons.org/licenses/by/4.0/ -->
+                </figure>
             </li>
             <li>
                 <strong>Fast Iterative Region Inflation for Computing Large 2-D/3-D Convex Regions of Obstacle-Free Space</strong><br>
@@ -601,6 +618,7 @@
               <div class="timeline-body">
                 <h3>Investment Intern</h3>
                 <div class="timeline-org"><a href="https://capitaltoday.com/" class="paper-link">Capital Today</a>, Shanghai</div>
+                <div class="timeline-note">Completed internship</div>
               </div>
             </div>
           </article>
